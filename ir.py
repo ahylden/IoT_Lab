@@ -14,7 +14,7 @@ try:
         if GPIO.input(sensor):
             print("Object Detected")
             while GPIO.input(sensor):
-            time.sleep(0.2)
+                time.sleep(0.2)
         else:
             print("No Object Dectected")
 
