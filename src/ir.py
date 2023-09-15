@@ -1,5 +1,6 @@
 import RPi.GPIO as GPIO
 import time
+from aws-connect import publishData
 
 sensor = 16
 
@@ -13,6 +14,7 @@ try:
    while True:
         if GPIO.input(sensor):
             print("Object Detected")
+            publishData("Object Detected")
         else:
             print("No Object Dectected")
         time.sleep(.5)
