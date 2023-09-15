@@ -1,6 +1,6 @@
 import RPi.GPIO as GPIO
 import time
-from aws-connect import publishData
+from aws_connect import publishData
 
 sensor = 16
 
