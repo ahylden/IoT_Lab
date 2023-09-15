@@ -9,7 +9,7 @@ def on_connect(client, userdata, flags, rc):
 
 client = mqtt.Client()
 client.on_connect = on_connect
-client.tls_set(ca_certs='./rootCA.pem', certfile='./certificate.pem.crt', keyfile='./private.pem.key', tls_version=ssl.PROTOCOL_SSLv23)
+client.tls_set(ca_certs='../certs/rootCA.pem', certfile='../certs/certificate.pem.crt', keyfile='../certs/private.pem.key', tls_version=ssl.PROTOCOL_SSLv23)
 client.tls_insecure_set(True)
 client.connect("YOUR_IoT_ENDPOINT", 8883, 60)
 
