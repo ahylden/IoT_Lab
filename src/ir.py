@@ -16,7 +16,7 @@ try:
             print("Object Detected")
             publishData("Object Detected")
         else:
-            print("No Object Dectected")
+            print("No Object Detected")
             publishData("No Object Detected")
         time.sleep(.5)
 
