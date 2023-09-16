@@ -22,6 +22,7 @@ def publishData(txt):
                     }
                 }
     
+    print(txt)
     client.publish("$aws/things/RaspberryPi/shadow/name/raspi/update", payload=json.dumps(statusUpdate, indent=4), qos=0, retain=False)
         
 #_thread.start_new_thread(publishData,("Spin-up new Thread...",))
