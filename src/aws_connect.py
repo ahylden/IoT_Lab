@@ -14,12 +14,14 @@ client.tls_insecure_set(True)
 client.connect("a3vqslwjgydv4a-ats.iot.us-east-2.amazonaws.com", 8883, 60)
 
 def publishData(txt):
+    #json update format per aws website
     statusUpdate = { "state" : {   
                     "reported" :
                             {"detected" : txt
                         }
                     }
                 }
+    
     print(txt)
     client.publish("$aws/things/RaspberryPi/shadow/name/raspi/update", payload=json.dumps(statusUpdate, indent=4), qos=0, retain=False)
         

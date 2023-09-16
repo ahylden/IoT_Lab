@@ -17,6 +17,7 @@ try:
             publishData("Object Detected")
         else:
             print("No Object Dectected")
+            publishData("No Object Detected")
         time.sleep(.5)
 
 except KeyboardInterrupt:
