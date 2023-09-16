@@ -17,8 +17,8 @@ try:
             publishData("Object Detected")
         else:
             print("No Object Detected")
-            publishData("No Object Detected")
-        time.sleep(2)
+            #publishData("No Object Detected")
+        time.sleep(1)
 
 except KeyboardInterrupt:
     GPIO.cleanup()
