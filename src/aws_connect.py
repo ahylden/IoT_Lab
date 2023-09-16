@@ -14,8 +14,14 @@ client.tls_insecure_set(True)
 client.connect("a3vqslwjgydv4a-ats.iot.us-east-2.amazonaws.com", 8883, 60)
 
 def publishData(txt):
+    statusUpdate = { "state" : {   
+                    "reported" :
+                            {"detected" : txt
+                        }
+                    }
+                }
     print(txt)
-    client.publish("$aws/things/RaspberryPi/shadow/name/raspi", payload=json.dumps({"msg": txt}), qos=0, retain=False)
+    client.publish("$aws/things/RaspberryPi/shadow/name/raspi/update", payload=json.dumps(statusUpdate, indent=4), qos=0, retain=False)
         
 #_thread.start_new_thread(publishData,("Spin-up new Thread...",))
 
