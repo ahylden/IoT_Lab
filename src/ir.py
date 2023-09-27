@@ -19,8 +19,7 @@ if __name__ == '__main__':
     GPIO.setup(sensor, GPIO.IN)
     print("IR Sensor Ready.....")
     print(" ")
-    GPIO.add_event_detect(sensor, GPIO.FALLING, 
-            callback=ir_detection_callback, bouncetime=100)
+    GPIO.add_event_detect(sensor, GPIO.BOTH, callback=ir_detection_callback)
     
     signal.signal(signal.SIGINT, signal_handler)
     signal.pause()
