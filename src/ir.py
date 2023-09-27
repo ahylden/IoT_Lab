@@ -1,24 +1,26 @@
 import RPi.GPIO as GPIO
+import signal
+import sys
 import time
 from aws_connect import publishData
 
-sensor = 16
+BUTTON_GPIO = 16
 
-GPIO.setmode(GPIO.BOARD)
-GPIO.setup(sensor,GPIO.IN)
-
-print("IR Sensor Ready.....")
-print(" ")
-
-try: 
-   while True:
-        if GPIO.input(sensor):
-            print("Object Detected")
-            publishData("IR Sensor")
-        else:
-            print("No Object Detected")
-            #publishData("No Object Detected")
-        time.sleep(.5)
-
-except KeyboardInterrupt:
+def signal_handler(sig, frame):
     GPIO.cleanup()
+    sys.exit(0)
+
+def ir_detection_callback(channel):
+    print("Object Detected")
+    publishData("IR Sensor")
+
+if __name__ == '__main__':
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setup(BUTTON_GPIO, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+    print("IR Sensor Ready.....")
+    print(" ")
+    GPIO.add_event_detect(BUTTON_GPIO, GPIO.FALLING, 
+            callback=ir_detection_callback, bouncetime=100)
+    
+    signal.signal(signal.SIGINT, signal_handler)
+    signal.pause()

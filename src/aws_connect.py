@@ -24,7 +24,7 @@ def publishData(txt):
     #            }
 
     timeDetected = datetime.datetime.now().strftime("%m/%d/%Y, %H:%M:%S")
-    client.publish("raspi/data", payload=json.dumps({"time": timeDetected, "detection_method": txt}), qos=0, retain=False)
+    client.publish("raspi/data", payload=json.dumps({"time": timeDetected, "detectionmethod": txt}), qos=0, retain=False)
         
 #_thread.start_new_thread(publishData,("Spin-up new Thread...",))
 
