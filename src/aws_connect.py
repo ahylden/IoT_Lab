@@ -15,14 +15,16 @@ client.connect("a3vqslwjgydv4a-ats.iot.us-east-2.amazonaws.com", 8883, 60)
 
 def publishData(txt):
     #json update format per aws website
-    statusUpdate = { "state" : {   
-                    "reported" :
-                            {"detected" : txt
-                        }
-                    }
-                }
-    
-    client.publish("$aws/things/RaspberryPi/shadow/name/raspi/update", payload=json.dumps(statusUpdate, indent=4), qos=0, retain=False)
+    #statusUpdate = { "state" : {   
+    #                "reported" :
+    #                        {"detected" : txt
+    #                    }
+    #                }
+    #            }
+
+    timeDetected = datetime.datetime.now().strftime("%m/%d/%Y, $H:%M:%S"
+                                                    )
+    client.publish("raspi/data", payload=json.dumps("time": timeDetected, "detection method": txt), qos=0, retain=False)
         
 #_thread.start_new_thread(publishData,("Spin-up new Thread...",))
 

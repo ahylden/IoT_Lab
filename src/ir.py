@@ -14,7 +14,7 @@ try:
    while True:
         if GPIO.input(sensor):
             print("Object Detected")
-            publishData("Object Detected")
+            publishData("IR Sensor")
         else:
             print("No Object Detected")
             #publishData("No Object Detected")
