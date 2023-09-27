@@ -22,6 +22,9 @@ def publishData(txt):
     #                }
     #            }
 
+    method = ""
+    method = txt
+
     timeDetected = datetime.datetime.now().strftime("%m/%d/%Y, $H:%M:%S"
                                                     )
     client.publish("raspi/data", payload=json.dumps("time": timeDetected, "detection method": txt), qos=0, retain=False)
