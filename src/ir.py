@@ -19,6 +19,7 @@ try:
             publishData("IR Sensor")
             GPIO.output(speaker, 1)
         else:
+            GPIO.output(speaker, 0)
             print("No Object Detected")
             #publishData("No Object Detected")
         time.sleep(.5)
