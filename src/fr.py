@@ -37,7 +37,7 @@ class FaceRecognition:
     def run_recognition(self):
         video_capture = cv2.VideoCapture(0)
 
-        if not video_capture.isOpened()
+        if not video_capture.isOpened():
             sys.exit('Video source not found...')
         
         while True:
@@ -51,7 +51,7 @@ class FaceRecognition:
                 self.face_encodings = face_recognition.face_encodings(rgb_small_frame, self.face_locations)
 
                 self.face_names = []
-                for face_encoding in self.face_encodings
+                for face_encoding in self.face_encodings:
                     matches = face_recognition.compare_faces(self.known_face_encodings, face_encoding)
                     name = 'Unknown'
                     confidence = 'Unknown'
