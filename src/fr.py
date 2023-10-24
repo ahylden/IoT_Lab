@@ -3,6 +3,7 @@ import os, sys
 import cv2
 import numpy as np
 import math
+import numpy
 
 def face_confidence(face_distance, face_match_threshold=0.6):
     range = (1.0 - face_match_threshold)
@@ -46,7 +47,7 @@ class FaceRecognition:
 
             if self.process_current_frame:
                 small_frame = cv2.resize(frame, (0,0), fx=0.25, fy=0.25)
-                rgb_small_frame = small_frame[:,:,::-1]
+                rgb_small_frame = numpy.ascontiguousarray(small_frame[:, :, ::-1])
 
                 self.face_locations = face_recognition.face_locations(rgb_small_frame)
                 self.face_encodings = face_recognition.face_encodings(rgb_small_frame, self.face_locations)
