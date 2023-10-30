@@ -1,12 +1,9 @@
 import RPi.GPIO as GPIO
 import time
 from aws_connect import publishData
-import fr
 
 sensor = 16
 speaker = 36
-
-fr_ = FaceRecognition()
 
 armed = True
 
