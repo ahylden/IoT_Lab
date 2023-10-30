@@ -116,7 +116,7 @@ if __name__ == '__main__':
                 publishData("IR Sensor")
                 GPIO.output(speaker, 1)
                 fr.run_recognition()
-                if fr.name != "Unknown"
+                if fr.name != "Unknown":
                     armed = False
             else:
                 #GPIO.output(speaker, 0)
