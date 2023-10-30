@@ -45,7 +45,6 @@ class FaceRecognition:
 
             self.known_face_encodings.append(face_encoding)
             self.known_face_names.append(image)
-        print("Authorized Users: " + self.known_face_names)
 
     def run_recognition(self):
         video_capture = cv2.VideoCapture(0)
