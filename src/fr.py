@@ -106,22 +106,22 @@ if __name__ == '__main__':
     fr = FaceRecognition()
     fr.run_recognition()
 
-    print("IR Sensor Ready.....")
-    print(" ")
-
-    try: 
-       while armed:
-            if GPIO.input(sensor):
-                print("Object Detected")
-                publishData("IR Sensor")
-                GPIO.output(speaker, 1)
-                fr.run_recognition()
-                if fr.name != "Unknown":
-                    armed = False
-            else:
-                #GPIO.output(speaker, 0)
-                print("No Object Detected")
-            time.sleep(.5)
-
-    except KeyboardInterrupt:
-        GPIO.cleanup()
+    #print("IR Sensor Ready.....")
+    #print(" ")
+#
+    #try: 
+    #   while armed:
+    #        if GPIO.input(sensor):
+    #            print("Object Detected")
+    #            publishData("IR Sensor")
+    #            GPIO.output(speaker, 1)
+    #            fr.run_recognition()
+    #            if fr.name != "Unknown":
+    #                armed = False
+    #        else:
+    #            #GPIO.output(speaker, 0)
+    #            print("No Object Detected")
+    #        time.sleep(.5)
+#
+    #except KeyboardInterrupt:
+    #    GPIO.cleanup()
