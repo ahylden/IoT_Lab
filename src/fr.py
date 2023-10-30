@@ -83,6 +83,8 @@ class FaceRecognition:
 
             if cv2.waitKey(1) == ord('q'):
                 break
+            if name != unknown:
+                return name
 
         video_capture.release()
         cv2.destroyAllWindows()

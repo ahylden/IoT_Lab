@@ -1,9 +1,12 @@
 import RPi.GPIO as GPIO
 import time
 from aws_connect import publishData
+from ir import run_recognition
 
 sensor = 16
 speaker = 36
+
+armed = True
 
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(sensor,GPIO.IN)
@@ -13,15 +16,16 @@ print("IR Sensor Ready.....")
 print(" ")
 
 try: 
-   while True:
+   while armed:
         if GPIO.input(sensor):
             print("Object Detected")
             publishData("IR Sensor")
-            GPIO.output(speaker, 1)
+            while run_recognition() == "Unknown":
+                GPIO.output(speaker, 1)
+            armed = False
         else:
-            GPIO.output(speaker, 0)
+            #GPIO.output(speaker, 0)
             print("No Object Detected")
-            #publishData("No Object Detected")
         time.sleep(.5)
 
 except KeyboardInterrupt:
