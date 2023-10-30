@@ -91,12 +91,14 @@ class FaceRecognition:
                 cv2.rectangle(frame, (left, top), (right, bottom), (0,0,255), 2)
                 cv2.rectangle(frame, (left, bottom -35), (right, bottom), (0,0,255), -1)
                 cv2.putText(frame, name, (left + 6, bottom - 6), cv2.FONT_HERSHEY_DUPLEX, 0.8, (255,255,255), 1)
+
+                if name != "Unknown":
+                    armed = False
+                    break
             
             cv2.imshow('Face Recognition', frame)
 
             if cv2.waitKey(1) == ord('q'):
-                break
-            if name != unknown:
                 break
 
         video_capture.release()
@@ -104,24 +106,23 @@ class FaceRecognition:
 
 if __name__ == '__main__':
     fr = FaceRecognition()
-    fr.run_recognition()
+    #fr.run_recognition()
 
-    #print("IR Sensor Ready.....")
-    #print(" ")
-#
-    #try: 
-    #   while armed:
-    #        if GPIO.input(sensor):
-    #            print("Object Detected")
-    #            publishData("IR Sensor")
-    #            GPIO.output(speaker, 1)
-    #            fr.run_recognition()
-    #            if fr.name != "Unknown":
-    #                armed = False
-    #        else:
-    #            #GPIO.output(speaker, 0)
-    #            print("No Object Detected")
-    #        time.sleep(.5)
-#
-    #except KeyboardInterrupt:
-    #    GPIO.cleanup()
+    print("IR Sensor Ready.....")
+    print(" ")
+
+    try: 
+       while armed:
+            if GPIO.input(sensor):
+                print("Object Detected")
+                publishData("IR Sensor")
+                GPIO.output(speaker, 1)
+                fr.run_recognition()
+            else:
+                #GPIO.output(speaker, 0)
+                print("No Object Detected")
+            time.sleep(.5)
+        GPIO.output(speaker, 0)
+
+    except KeyboardInterrupt:
+        GPIO.cleanup()
