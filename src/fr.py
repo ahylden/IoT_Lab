@@ -122,6 +122,7 @@ if __name__ == '__main__':
                 #GPIO.output(speaker, 0)
                 print("No Object Detected")
             time.sleep(.5)
+       
         GPIO.output(speaker, 0)
 
     except KeyboardInterrupt:
