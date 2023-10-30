@@ -93,14 +93,14 @@ class FaceRecognition:
                 cv2.rectangle(frame, (left, bottom -35), (right, bottom), (0,0,255), -1)
                 cv2.putText(frame, name, (left + 6, bottom - 6), cv2.FONT_HERSHEY_DUPLEX, 0.8, (255,255,255), 1)
 
-                if self.name != "Unknown":
-                    armed = False
+                if name != "Unknown":
+                    self.armed = False
             
             cv2.imshow('Face Recognition', frame)
 
             if cv2.waitKey(1) == ord('q'):
                 break
-            if armed == False:
+            if self.armed == False:
                 break
 
         video_capture.release()
