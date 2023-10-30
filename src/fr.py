@@ -97,7 +97,7 @@ class FaceRecognition:
             if cv2.waitKey(1) == ord('q'):
                 break
             if name != unknown:
-                return name
+                break
 
         video_capture.release()
         cv2.destroyAllWindows()
@@ -114,9 +114,10 @@ if __name__ == '__main__':
             if GPIO.input(sensor):
                 print("Object Detected")
                 publishData("IR Sensor")
-                while fr.name == "Unknown":
-                    GPIO.output(speaker, 1)
-                armed = False
+                GPIO.output(speaker, 1)
+                fr.run_recognition()
+                if fr.name != "Unknown"
+                    armed = False
             else:
                 #GPIO.output(speaker, 0)
                 print("No Object Detected")
