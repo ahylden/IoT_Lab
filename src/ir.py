@@ -1,7 +1,7 @@
 import RPi.GPIO as GPIO
 import time
 from aws_connect import publishData
-from ir import run_recognition
+from fr import run_recognition
 
 sensor = 16
 speaker = 36
