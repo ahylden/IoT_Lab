@@ -14,9 +14,9 @@ speaker = 36
 
 armed = True
 
-#GPIO.setmode(GPIO.BOARD)
-#GPIO.setup(sensor,GPIO.IN)
-#GPIO.setup(speaker,GPIO.OUT)
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup(sensor,GPIO.IN)
+GPIO.setup(speaker,GPIO.OUT)
 
 def face_confidence(face_distance, face_match_threshold=0.6):
     range = (1.0 - face_match_threshold)
