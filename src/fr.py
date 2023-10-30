@@ -118,12 +118,11 @@ if __name__ == '__main__':
                 publishData("IR Sensor")
                 GPIO.output(speaker, 1)
                 fr.run_recognition()
+                GPIO.output(speaker, 0)
             else:
                 #GPIO.output(speaker, 0)
                 print("No Object Detected")
             time.sleep(.5)
-       
-    GPIO.output(speaker, 0)
 
     except KeyboardInterrupt:
         GPIO.cleanup()
