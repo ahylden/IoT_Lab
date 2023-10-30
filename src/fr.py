@@ -104,7 +104,7 @@ class FaceRecognition:
 
 if __name__ == '__main__':
     fr = FaceRecognition()
-    #fr.run_recognition()
+    fr.run_recognition()
 
     print("IR Sensor Ready.....")
     print(" ")
@@ -114,7 +114,7 @@ if __name__ == '__main__':
             if GPIO.input(sensor):
                 print("Object Detected")
                 publishData("IR Sensor")
-                while fr.run_recognition() == "Unknown":
+                while fr.name == "Unknown":
                     GPIO.output(speaker, 1)
                 armed = False
             else:
