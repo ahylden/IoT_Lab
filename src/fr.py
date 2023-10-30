@@ -75,6 +75,7 @@ class FaceRecognition:
                     if matches[best_match_index]:
                         name = self.known_face_names[best_match_index]
                         confidence = face_confidence(face_distances[best_match_index])
+                        print(name)
 
                     self.face_names.append(f'{name}({confidence})')
             
@@ -89,6 +90,8 @@ class FaceRecognition:
                 cv2.rectangle(frame, (left, top), (right, bottom), (0,0,255), 2)
                 cv2.rectangle(frame, (left, bottom -35), (right, bottom), (0,0,255), -1)
                 cv2.putText(frame, name, (left + 6, bottom - 6), cv2.FONT_HERSHEY_DUPLEX, 0.8, (255,255,255), 1)
+
+                print(name)
 
                 if name != "Unknown":
                     self.armed = False
