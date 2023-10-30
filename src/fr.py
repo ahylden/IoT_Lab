@@ -12,8 +12,6 @@ from aws_connect import publishData
 sensor = 16
 speaker = 36
 
-armed = True
-
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(sensor,GPIO.IN)
 GPIO.setup(speaker,GPIO.OUT)
@@ -35,6 +33,7 @@ class FaceRecognition:
     known_face_encodings = []
     known_face_names = []
     process_current_frame = True
+    armed = True
 
     def __init__(self):
         self.encode_faces()
@@ -114,7 +113,7 @@ if __name__ == '__main__':
     print(" ")
 
     try: 
-       while armed:
+       while fr.armed:
             if GPIO.input(sensor):
                 print("Object Detected")
                 publishData("IR Sensor")
