@@ -78,7 +78,6 @@ class FaceRecognition:
                         name = self.known_face_names[best_match_index]
                         confidence = face_confidence(face_distances[best_match_index])
                         armed = False
-                        break
 
                     self.face_names.append(f'{name}({confidence})')
             
@@ -96,11 +95,12 @@ class FaceRecognition:
 
                 if name != "Unknown":
                     armed = False
-                    break
             
             cv2.imshow('Face Recognition', frame)
 
             if cv2.waitKey(1) == ord('q'):
+                break
+            if armed == False:
                 break
 
         video_capture.release()
