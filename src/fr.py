@@ -75,7 +75,6 @@ class FaceRecognition:
                     if matches[best_match_index]:
                         name = self.known_face_names[best_match_index]
                         confidence = face_confidence(face_distances[best_match_index])
-                        self.armed = False
 
                     self.face_names.append(f'{name}({confidence})')
             
