@@ -1,10 +1,12 @@
 import RPi.GPIO as GPIO
 import time
 from aws_connect import publishData
-from fr import run_recognition
+import fr.py
 
 sensor = 16
 speaker = 36
+
+fr_ = FaceRecognition()
 
 armed = True
 
@@ -20,7 +22,7 @@ try:
         if GPIO.input(sensor):
             print("Object Detected")
             publishData("IR Sensor")
-            while run_recognition() == "Unknown":
+            while fr_.run_recognition() == "Unknown":
                 GPIO.output(speaker, 1)
             armed = False
         else:
