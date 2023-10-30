@@ -125,4 +125,4 @@ if __name__ == '__main__':
              print("No Object Detected")
          time.sleep(.5)
     print("Disarmed")
-     GPIO.cleanup()
+    GPIO.cleanup()
