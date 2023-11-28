@@ -108,11 +108,11 @@ class FaceRecognition:
         cv2.destroyAllWindows()
 
 if __name__ == '__main__':
-    fr = FaceRecognition()
-    #fr.run_recognition()
-
     print("Arming.....")
     print(" ")
+    
+    fr = FaceRecognition()
+    #fr.run_recognition()
 
     while fr.armed:
          if GPIO.input(sensor):
